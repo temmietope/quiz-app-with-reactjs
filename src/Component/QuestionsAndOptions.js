@@ -5,7 +5,7 @@ class QuestionsAndOptions extends Component {
   state = {
     questions: [],
     currentQuestion: 0,
-    count: 0
+    score: 0
   };
   componentDidMount() {
     this.setState({
@@ -26,7 +26,8 @@ class QuestionsAndOptions extends Component {
                 <input
                   type="radio"
                   name="option"
-                  onClick={() => {
+                  className="radios"
+                  onChange={() => {
                     this.selectedOption({ index });
                   }}
                 />
@@ -40,13 +41,20 @@ class QuestionsAndOptions extends Component {
   }
   selectedOption = option => {
     const { currentQuestion } = this.state;
+    let { score } = this.state;
     if (questions[currentQuestion].answer === option.index) {
-      console.log("fine");
+      score = score + 1;
+      this.setState({ score });
+      console.log(score);
     } else {
       console.log("clown");
     }
   };
   nextQuestion = () => {
+    const radios = document.querySelectorAll(".radios");
+    radios.forEach(radio => {
+      radio.checked = radio.checked && !radio.checked;
+    });
     let { currentQuestion } = this.state;
     this.setState({ currentQuestion: currentQuestion + 1 });
     console.log(currentQuestion);
