@@ -81,7 +81,7 @@ class QuestionsAndOptions extends Component {
     return <h1>Score: {score}</h1>;
   }
   render() {
-    let { finished, showResults, chosen } = this.state;
+    let { finished, showResults } = this.state;
 
     if (showResults) {
       return <>{this.renderAnswer()}</>;
