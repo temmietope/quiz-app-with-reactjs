@@ -5,9 +5,11 @@ import QuestionsAndOptions from "./Component/QuestionsAndOptions";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <QuestionsAndOptions />
+    <div className="wrapper">
+      <div className="container">
+        <Header />
+        <QuestionsAndOptions />
+      </div>
     </div>
   );
 }
