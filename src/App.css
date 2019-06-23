@@ -41,3 +41,14 @@
   color: blue;
   border: 1px solid black;
 }
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+}
