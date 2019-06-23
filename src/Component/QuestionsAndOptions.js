@@ -97,7 +97,6 @@ class QuestionsAndOptions extends Component {
       });
     }
     this.setState({ currentQuestion: currentQuestion + 1, chosen: false });
-    console.log(currentQuestion);
   };
   renderAnswer() {
     const { score } = this.state;
@@ -113,13 +112,15 @@ class QuestionsAndOptions extends Component {
     return (
       <div>
         {this.state.questions.length > 0 && this.renderQuestion()}
-        <button
-          onClick={() => {
-            this.nextQuestion();
-          }}
-        >
-          {finished ? "Finish" : "Next"}
-        </button>
+        <div className="button">
+          <button
+            onClick={() => {
+              this.nextQuestion();
+            }}
+          >
+            {finished ? "Finish" : "Next"}
+          </button>
+        </div>
       </div>
     );
   }
