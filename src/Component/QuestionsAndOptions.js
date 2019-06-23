@@ -61,9 +61,7 @@ class QuestionsAndOptions extends Component {
       this.setState({ lastClicked: index });
     }
   };
-  selectedOption = (option, e) => {
-    e.target.classList.add("target");
-    console.log(e.target.className);
+  selectedOption = option => {
     this.setState({
       chosen: true
     });
