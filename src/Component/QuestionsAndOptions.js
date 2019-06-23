@@ -7,6 +7,7 @@ class QuestionsAndOptions extends Component {
     currentQuestion: 0,
     score: 0,
     finished: false,
+    lastClicked: null,
     showResults: false,
     chosen: false
   };
@@ -19,22 +20,28 @@ class QuestionsAndOptions extends Component {
     const { questions, currentQuestion } = this.state;
     return (
       <span>
-        <div>
+        <div className="questionDiv">
           <p> {questions[currentQuestion].question}</p>
         </div>
-        <div>
+        <div className="optionsDiv">
           {questions[currentQuestion].options.map((option, index) => {
             return (
-              <label key={index}>
+              <label
+                key={index}
+                className="option"
+                onClick={e => {
+                  this.changeColor(e, index);
+                }}
+              >
                 <input
                   type="radio"
                   name="option"
                   className="radios"
-                  onChange={() => {
-                    this.selectedOption({ index });
+                  onChange={e => {
+                    this.selectedOption({ index }, e);
                   }}
                 />
-                {option}
+                <span className="exactOption">{option}</span>
               </label>
             );
           })}
@@ -42,7 +49,21 @@ class QuestionsAndOptions extends Component {
       </span>
     );
   }
-  selectedOption = option => {
+  changeColor = (e, index) => {
+    const { lastClicked } = this.state;
+    const optionArray = document.querySelectorAll(".exactOption");
+    if (lastClicked != null) {
+      optionArray[lastClicked].style.color = "blue";
+      this.setState({ lastClicked: index });
+      optionArray[index].style.color = "red";
+    } else {
+      e.target.style.color = "red";
+      this.setState({ lastClicked: index });
+    }
+  };
+  selectedOption = (option, e) => {
+    e.target.classList.add("target");
+    console.log(e.target.className);
     this.setState({
       chosen: true
     });
