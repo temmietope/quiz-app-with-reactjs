@@ -78,6 +78,10 @@ class QuestionsAndOptions extends Component {
     if (!this.state.chosen) {
       return alert("Select an option");
     }
+    const optionArray = document.querySelectorAll(".exactOption");
+    optionArray.forEach(option => {
+      option.style.color = "blue";
+    });
     const radios = document.querySelectorAll(".radios");
     radios.forEach(radio => {
       radio.checked = radio.checked && !radio.checked;
