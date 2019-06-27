@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { questions } from "../questions";
+import questions from "../questions.json";
 
 class QuestionsAndOptions extends Component {
   state = {
